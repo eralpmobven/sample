@@ -11,7 +11,11 @@ Capture
 
 ## About
 
-Capture is the ultimate tool for reporting bugs & gathering product feedback.
+Capture makes reporting bugs easy, which increases the productivity of your test engineers; standardized reporting enables your developers to focus on fixing the bug instead of finding and reproducing it.
+
+Capture greatly improves your mobile testing processes.
+Just shake the phone to report a bug and be amazed how
+easy it can be.
 
 
 ## Usage
@@ -29,61 +33,61 @@ This generates a changelog to the `CHANGELOG.md` file, with pretty markdown form
 
 ###IOS:
 
-####Static Lib Gereklilikleri :
+####Static Lib Requirements :
 
-1) App Transportation Security Kapatilmasi
+1) Turn off App Transportation Security
 
-2) Target -> Build Settings -> Arama kismina “other linker flag” yazilip ilgili yere -ObjC -all_load eklenecek.
+2) Target -> Build Settings -> Write “other linker flag” to search and add -ObjC -all_load to the related place
 
-####AppDelegate.m Dosyasina
+####To AppDelegate.m file
 
 ```
 #import "MobvenBugReporter.h"
 ``` 
-seklinde import edilir. 
+import in this way. 
 ```
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir: 
+add the following code in the method above:
 
 ```
 [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-####Embedded Framework Kullanimi //Objective C // ----------
+####Usage of Embedded Framework//Objective C // ----------
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+2) Target -> Build Settings -> Write "Bitcode" to search and set the related place as 'YES'
 
-3) App Transportation Security Kapatilmasi
+3) Turn off App Transportation Security
 
-####AppDelegate.m Dosyasina:
+####To the AppDelegate.m File:
 ```
 #import <MobvenBugKit/MobvenBugKit.h>
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir : 
+add the following code in the method above: 
 ```
 [MobvenBugReporter initializeAppSecret:@"1" appId:@"1" projectId:@"1" in- vokeTypes:@[@(Shake), @(FloatingButton)]];
 ```
 
-####Embedded Framework Kullanimi //Swift // —————
+####Usage of Embedded Framework//Swift // —————
 
 1) Target-> General -> Embedded Binaries
 Add MobvenBugKit.framework
 
-2) Target -> Build Settings -> Arama kismina “Bitcode” yazilip ilgili yer YES olarak set edilir
+2) Target -> Build Settings -> Write "Bitcode" to Search and set the related place as 'YES'
 
-3) App Transportation Security Kapatilmasi
+3) Turn off App Transportation Security
 
-####AppDelegate Dosyasina:
+####To the AppDelegate file:
 ```
 import MobvenBugKit
 didFinishLaunchingWithOptions
 ```
-methodun icinde asagidaki kod eklenir :
+add the following code to the method above:
 ```
 let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un- signedInteger:InvocationType.FloatingButton.rawValue)]
 MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
@@ -201,7 +205,7 @@ An auto-generated changelog really helps, even if you manually fill in the relea
 
 For example:
 
-When I found a closed bug, it's very useful know which release fixed it. 
+When I saw a resolved bug, it's very useful to know on which release it's been fixed. 
 In this case, you can easily find the issue by \# in `CHANGELOG.md`.
 
 - it's not quite as easy to find this in handwritten releases notes
