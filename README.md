@@ -6,7 +6,7 @@ Capture
   - [Usage](#usage)
     - [IOS](#ios)
     - [Android](#android)
-  - [Links](#license)
+  - [Links](#links)
 
 
 ## About
@@ -95,11 +95,12 @@ dependencies {
 }
 ```
 
-####2. Add BugTracker to Override methods of activity as you see on the [example](#example). 
+####2. Add BugTracker to Override methods of activity as you see on the example. 
 
 ####3. (Optional) To be able to turn on events like”2 finger swipe", "volume up/down” your activities should override
-public void dispatchKeyEvent(Key event event);
-methods and BugTracker.dispatchKeyEvent(KeyEvent event) method should be called.
+
+``` java public void dispatchKeyEvent(Key event event);```method and 
+BugTracker.dispatchKeyEvent(KeyEvent event) method should be called.
 
 ```java
 public class MainActivity extends AppCompatActivity {
