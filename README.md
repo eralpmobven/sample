@@ -83,19 +83,61 @@ MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeT
 ```
 
 ###Android:
+
 ####1. To add aar file to project, copy aar file to lib folder
 
-## Contributing
+```gradle
+repositories {
+flatDir { dirs 'libs'} 
+}
+dependencies { 
+  compile(name:’bugtrackerlibrary-release', ext:'aar')
+}
+```
 
-1. Create an issue and describe your idea
-2. [Fork it] (https://github.com/skywinder/Github-Changelog-Generator/fork)
-3. Create your feature branch (`git checkout -b my-new-feature`)
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Publish the branch (`git push origin my-new-feature`)
-6. Create a new Pull Request
-7. Profit! :white_check_mark:
+####2. Add BugTracker to Override methods of activity as you see on the [example](#example). 
 
-*To test your workflow with changelog generator, you can use [test repo](https://github.com/skywinder/changelog_test/)*
+####3. (Optional) To be able to turn on events like”2 finger swipe", "volume up/down” your activities should override
+public void dispatchKeyEvent(Key event event);
+methods and BugTracker.dispatchKeyEvent(KeyEvent event) method should be called.
+
+```java
+public class MainActivity extends AppCompatActivity {
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+
+//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
+
+/**
+* public enum TRACKEVENT {
+* SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN */
+BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTrack- er.TRACKEVENT.SHAKE, true);
+
+//Attach on onCreate
+BugTracker.onCreate(this); 
+}
+
+@Override
+public void onResume() {
+super.onResume();
+// Add theme following line to register the Session Manager Listener onResume BugTracker.onResume(this);
+}
+
+@Override
+public void onPause() {
+// Add the following line to unregister the Sensor Manager onPause BugTracker.onPause(this);
+super.onPause(); 
+}
+
+@Override
+public boolean dispatchKeyEvent(KeyEvent event) {
+//Register for dispatchKeyEvent BugTracker.dispatchKeyEvent(event); return super.dispatchKeyEvent(event);
+} 
+}
+```
+
 
 ## License
 
