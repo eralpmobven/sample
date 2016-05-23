@@ -99,8 +99,7 @@ dependencies {
 
 ####3. (Optional) To be able to turn on events like”2 finger swipe", "volume up/down” your activities should override
 
-``` java public void dispatchKeyEvent(Key event event);```method and 
-BugTracker.dispatchKeyEvent(KeyEvent event) method should be called.
+```public void dispatchKeyEvent(Key event);```method and  ```BugTracker.dispatchKeyEvent(KeyEvent event);``` method should be called.
 
 ```java
 public class MainActivity extends AppCompatActivity {
