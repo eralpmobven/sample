@@ -104,41 +104,45 @@ methods and BugTracker.dispatchKeyEvent(KeyEvent event) method should be called.
 ```java
 public class MainActivity extends AppCompatActivity {
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState); setContentView(R.layout.activity_main);
 
-//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
+		//Initilizing the BugTracker String yourAppId=""; String yourAppSecret=""; String yourProjectId="";
 
-/**
-* public enum TRACKEVENT {
-* SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN */
-BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTrack- er.TRACKEVENT.SHAKE, true);
+		/**
+		 * public enum TRACKEVENT
+		 * SHAKE, TWO_FINGER_SWIPE, VOLUME_UP, VOLUME_DOWN 
+		 */
+		BugTracker.initialize(this, yourAppId, yourAppSecret, yourProjectId , BugTracker.TRACKEVENT.SHAKE, true);
 
-//Attach on onCreate
-BugTracker.onCreate(this); 
-}
+		//Attach on onCreate
+		BugTracker.onCreate(this);
+	}
 
-@Override
-public void onResume() {
-super.onResume();
-// Add theme following line to register the Session Manager Listener onResume BugTracker.onResume(this);
-}
+	@Override
+	public void onResume() {
+		super.onResume();
+		// Add theme following line to register the Session Manager Listener onResume 
+		BugTracker.onResume(this);
+	}
 
-@Override
-public void onPause() {
-// Add the following line to unregister the Sensor Manager onPause BugTracker.onPause(this);
-super.onPause(); 
-}
+	@Override
+	public void onPause() {
+		// Add the following line to unregister the Sensor Manager onPause 
+		BugTracker.onPause(this);
+		super.onPause();
+	}
 
-@Override
-public boolean dispatchKeyEvent(KeyEvent event) {
-//Register for dispatchKeyEvent BugTracker.dispatchKeyEvent(event); return super.dispatchKeyEvent(event);
-} 
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		//Register for dispatchKeyEvent 
+		BugTracker.dispatchKeyEvent(event);
+		return super.dispatchKeyEvent(event);
+	}
 }
 ```
 
 
-## License
-
-Github Changelog Generator is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+## Links
+[http://www.capture-mobile.com](http://www.capture-mobile.com)
