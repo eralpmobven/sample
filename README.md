@@ -5,7 +5,7 @@ Capture
   - [About](#about)
   - [Usage](#usage)
     - [IOS](#ios)
-    - [Android](#android)
+    - [Android](#Android)
   - [Links](#license)
 
 
