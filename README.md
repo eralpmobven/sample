@@ -82,7 +82,7 @@ let types = [NSNumber(unsignedInteger:InvocationType.Shake.rawValue),NSNumber(un
 MobvenBugReporter.initializeAppSecret("1", appId: "1", projectId: "1", in- vokeTypes:types)
 ```
 
-### For Android
+###Android:
 In your project root, you can put a params file named `.github_changelog_generator` to override default params:
 
 Example:
